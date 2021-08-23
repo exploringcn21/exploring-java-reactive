@@ -20,4 +20,9 @@ class StreamsExampleTest {
     void demoStreamGenerate() {
         streamsExample.demoStreamGenerate();
     }
+
+    @Test
+    void generateAndDisplayRandomNames() {
+        streamsExample.generateAndDisplayRandomNames();
+    }
 }

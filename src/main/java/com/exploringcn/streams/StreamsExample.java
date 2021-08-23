@@ -1,6 +1,9 @@
 package com.exploringcn.streams;
 
+import com.github.javafaker.Faker;
+
 import java.util.Random;
+import java.util.function.Supplier;
 import java.util.stream.Stream;
 
 public class StreamsExample {
@@ -26,6 +29,15 @@ public class StreamsExample {
                 .forEach(System.out::println); // terminate stream by looping each element and printing their values
     }
 
+    // 4 - Generate 10 random names and display them
+    public void generateAndDisplayRandomNames(){
+        Faker faker = new Faker();
+
+        Supplier<String> nameSupplier = () -> faker.name().name();
+        Stream.generate(nameSupplier)
+                .limit(10)
+                .forEach(System.out::println);
+    }
 
     public static void main(String[] args) {
 
