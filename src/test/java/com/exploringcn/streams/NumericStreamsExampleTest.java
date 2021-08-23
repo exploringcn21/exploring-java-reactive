@@ -22,4 +22,19 @@ class NumericStreamsExampleTest {
         int expected = 15;
         assertEquals(expected, actual);
     }
+
+    @Test
+    void findSumUsingNumericStreams() {
+        // given
+        int a = 1;
+        int b = 5;
+
+        // when
+        int actual = numericStreamsExample.findSumUsingNumericStreams(a, b);
+
+        // then
+        int expected = 15;
+        assertEquals(expected, actual);
+
+    }
 }
