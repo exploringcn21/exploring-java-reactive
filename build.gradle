@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+    id "io.freefair.lombok" version "6.1.0"
+}
+
+group 'com.exploringcn'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation('io.projectreactor:reactor-core:3.4.9')
+
+    //log - logback
+    implementation('ch.qos.logback:logback-classic:1.2.5')
+
+    //reactor-debug-agent
+    implementation('io.projectreactor:reactor-tools:3.4.9')
+
+    // faker library to produce mock values inspired by real world
+    implementation('com.github.javafaker:javafaker:1.0.2')
+
+    //testing
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+    testImplementation('org.mockito:mockito-core:3.11.2')
+    testImplementation('org.mockito:mockito-junit-jupiter:3.11.2')
+}
+
+test {
+    useJUnitPlatform()
+}
