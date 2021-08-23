@@ -42,4 +42,14 @@ class NumericStreamsExampleTest {
     void convertIntToDoubleStream() {
         numericStreamsExample.convertIntToDoubleStream();
     }
+
+    @Test
+    void generateAndDisplay() {
+        numericStreamsExample.generateAndDisplay(1, 50);
+    }
+
+    @Test
+    void findNumericAggregates() {
+        numericStreamsExample.findNumericAggregates(1, 10);
+    }
 }
