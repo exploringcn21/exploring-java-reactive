@@ -1,4 +1,4 @@
-package com.exploringcn.mono;
+package com.exploringcn.streams;
 
 import java.util.stream.Stream;
 

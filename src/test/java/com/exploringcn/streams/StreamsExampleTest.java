@@ -1,8 +1,6 @@
-package com.exploringcn.mono;
+package com.exploringcn.streams;
 
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class StreamsExampleTest {
 
