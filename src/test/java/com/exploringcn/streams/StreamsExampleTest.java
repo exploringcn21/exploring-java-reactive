@@ -15,4 +15,9 @@ class StreamsExampleTest {
     void demoStreamIterator() {
         streamsExample.demoStreamIterator();
     }
+
+    @Test
+    void demoStreamGenerate() {
+        streamsExample.demoStreamGenerate();
+    }
 }
