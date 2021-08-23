@@ -10,4 +10,9 @@ class StreamsExampleTest {
     void demoStreamOf() {
         streamsExample.demoStreamOf();
     }
+
+    @Test
+    void demoStreamIterator() {
+        streamsExample.demoStreamIterator();
+    }
 }
