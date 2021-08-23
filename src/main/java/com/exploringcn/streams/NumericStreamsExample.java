@@ -20,4 +20,12 @@ public class NumericStreamsExample {
                 .sum();
     }
 
+    // 7 - convert an integer stream to a double stream and print it
+    public void convertIntToDoubleStream(){
+        IntStream
+                .rangeClosed(1, 10)
+                .asDoubleStream()
+                .forEach(System.out::println);
+    }
+
 }

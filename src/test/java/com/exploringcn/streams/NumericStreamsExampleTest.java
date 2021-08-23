@@ -37,4 +37,9 @@ class NumericStreamsExampleTest {
         assertEquals(expected, actual);
 
     }
+
+    @Test
+    void convertIntToDoubleStream() {
+        numericStreamsExample.convertIntToDoubleStream();
+    }
 }
