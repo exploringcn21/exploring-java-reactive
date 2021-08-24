@@ -42,4 +42,9 @@ class CreatingStreamsTest {
     void generateWholeNumbers() {
         creatingStreams.generateWholeNumbers();
     }
+
+    @Test
+    void readFileAsStream() {
+        creatingStreams.readFileAsStream();
+    }
 }

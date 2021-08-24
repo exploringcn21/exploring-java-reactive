@@ -5,6 +5,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.ToString;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -74,7 +77,16 @@ public class CreatingStreams {
     }
 
 
-    // 14 - creating a stream from file
+    // 14 - creating a stream from reading a file
+    public void readFileAsStream(){
+        try {
+            String home = System.getenv().get("HOME");
+            Stream<String> fileLines = Files.lines(Paths.get(home.concat("/file1.txt")));
+            fileLines.forEach(System.out::println);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     // 15 - generate a supply of random numbers that is indefinite
     public void generateRandomNumbers(){
