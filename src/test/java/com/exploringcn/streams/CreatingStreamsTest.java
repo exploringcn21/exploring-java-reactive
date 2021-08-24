@@ -37,4 +37,9 @@ class CreatingStreamsTest {
     void generateRandomNumbers() {
         creatingStreams.generateRandomNumbers();
     }
+
+    @Test
+    void generateWholeNumbers() {
+        creatingStreams.generateWholeNumbers();
+    }
 }

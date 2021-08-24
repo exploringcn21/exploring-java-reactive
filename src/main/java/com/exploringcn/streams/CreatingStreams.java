@@ -78,8 +78,14 @@ public class CreatingStreams {
 
     // 15 - generate a supply of random numbers that is indefinite
     public void generateRandomNumbers(){
-        Stream<Double> randomNumbers = Stream.generate(Math::random);
+        Stream<Double> randomNumbers = Stream.generate(Math::random);  // takes in a Supplier
         randomNumbers.forEach(System.out::println);
+    }
+
+    // 16 - generate a stream that starts from a User driven value that is indefinite
+    public void generateWholeNumbers(){
+        Stream<Integer> wholeNumbers = Stream.iterate(0, i -> i + 1);
+        wholeNumbers.forEach(System.out::println);
     }
 
 }
