@@ -32,4 +32,9 @@ class CreatingStreamsTest {
         System.out.println("PRINTING EMPLOYEE DETAILS: ");
         creatingStreams.fromArrays();
     }
+
+    @Test
+    void generateRandomNumbers() {
+        creatingStreams.generateRandomNumbers();
+    }
 }

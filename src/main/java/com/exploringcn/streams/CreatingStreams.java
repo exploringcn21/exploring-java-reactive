@@ -76,4 +76,10 @@ public class CreatingStreams {
 
     // 14 - creating a stream from file
 
+    // 15 - generate a supply of random numbers that is indefinite
+    public void generateRandomNumbers(){
+        Stream<Double> randomNumbers = Stream.generate(Math::random);
+        randomNumbers.forEach(System.out::println);
+    }
+
 }
