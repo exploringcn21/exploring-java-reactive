@@ -12,4 +12,9 @@ class MonoExampleTest {
     void demoSingleElementMono() {
         monoExample.demoSingleElementMono();
     }
+
+    @Test
+    void demoPublisherEventsBehaviour() {
+        monoExample.demoPublisherEventsBehaviour();
+    }
 }
