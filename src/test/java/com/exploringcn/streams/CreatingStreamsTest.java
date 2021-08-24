@@ -14,4 +14,10 @@ class CreatingStreamsTest {
         creatingStreams.fromCollectionsDemo();
 
     }
+
+    @Test
+    void emptyStreamDemo() {
+        System.out.println("PRINTING EMPTY STREAM COUNT: ");
+        creatingStreams.emptyStreamDemo();
+    }
 }

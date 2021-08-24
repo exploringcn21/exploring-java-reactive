@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.ToString;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 @Data
 @Builder
@@ -36,7 +37,11 @@ public class CreatingStreams {
     }
 
 
-    // 11 - creating an empty stream
+    // 11 - creating an empty stream and printing its count
+    public void emptyStreamDemo(){
+        Stream<Employee> employees = Stream.empty();
+        System.out.println(employees.count());
+    }
 
 
     // 12 - creating streams from values
