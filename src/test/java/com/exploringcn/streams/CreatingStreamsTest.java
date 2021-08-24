@@ -26,4 +26,10 @@ class CreatingStreamsTest {
         System.out.println("PRINTING EMPLOYEE DETAILS: ");
         creatingStreams.fromValues();
     }
+
+    @Test
+    void fromArrays() {
+        System.out.println("PRINTING EMPLOYEE DETAILS: ");
+        creatingStreams.fromArrays();
+    }
 }

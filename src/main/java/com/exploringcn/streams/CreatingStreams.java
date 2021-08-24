@@ -57,6 +57,21 @@ public class CreatingStreams {
 
 
     // 13 - creating streams from array
+    public void fromArrays(){
+        // define the employees array
+        Employee[] employees = {
+                Employee.builder().name(faker.name().name()).location(faker.country().name()).build(),  // employee 1
+                Employee.builder().name(faker.name().name()).location(faker.country().name()).build(),  // employee 2
+                Employee.builder().name(faker.name().name()).location(faker.country().name()).build()  // employee 3
+        };
+
+        // create stream of that array
+        Stream<Employee> employeeStream = Stream.of(employees);
+
+        // print details of each Employee from the stream
+        employeeStream.forEach(System.out::println);
+
+    }
 
 
     // 14 - creating a stream from file
