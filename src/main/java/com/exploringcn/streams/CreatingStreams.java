@@ -45,6 +45,15 @@ public class CreatingStreams {
 
 
     // 12 - creating streams from values
+    public void fromValues(){
+        Stream<Employee> employees = Stream.of(
+                Employee.builder().name(faker.name().name()).location(faker.country().name()).build(),  // employee 1
+                Employee.builder().name(faker.name().name()).location(faker.country().name()).build(),  // employee 2
+                Employee.builder().name(faker.name().name()).location(faker.country().name()).build()  // employee 3
+        );
+
+        employees.forEach(System.out::println);
+    }
 
 
     // 13 - creating streams from array

@@ -20,4 +20,10 @@ class CreatingStreamsTest {
         System.out.println("PRINTING EMPTY STREAM COUNT: ");
         creatingStreams.emptyStreamDemo();
     }
+
+    @Test
+    void fromValues() {
+        System.out.println("PRINTING EMPLOYEE DETAILS: ");
+        creatingStreams.fromValues();
+    }
 }
