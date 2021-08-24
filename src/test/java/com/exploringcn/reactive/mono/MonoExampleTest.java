@@ -17,4 +17,9 @@ class MonoExampleTest {
     void demoPublisherEventsBehaviour() {
         monoExample.demoPublisherEventsBehaviour();
     }
+
+    @Test
+    void simulateOnErrorBehaviour() {
+        monoExample.simulateOnErrorBehaviour();
+    }
 }

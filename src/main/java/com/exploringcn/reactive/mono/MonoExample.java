@@ -38,4 +38,22 @@ public class MonoExample {
         );
     }
 
+    // 03 - subscribe to a publisher & simulate onError behavior
+    public void simulateOnErrorBehaviour(){
+        // create publisher. Treat the mono as a pipeline with multiple stages
+        Mono<Integer> mono = Mono.just("Tonmoy") // pipeline stage 1
+                .map(String::length) // pipeline stage 2
+                .map((e) -> e/0);  // pipeline stage 3 - fail deliberately
+
+
+        // onNext: print if it's even or odd
+        // onError: print error message - THIS SHOULD TRIGGER THIS TIME
+        // onComplete: print completion message
+        mono.subscribe(
+                (e) -> System.out.printf("Received %s%n", e),
+                (error) -> System.err.println(error.getMessage()),
+                () -> System.out.println("Completed emitting events")
+        );
+    }
+
 }
