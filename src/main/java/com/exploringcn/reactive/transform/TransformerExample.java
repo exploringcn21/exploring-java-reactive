@@ -40,4 +40,15 @@ public class TransformerExample {
         return Flux.just(number * number, number * number * number);
     }
 
+    public Flux<String> flatMapDemoTwo(List<String> names){
+        return Flux.fromIterable(names)
+                .flatMap(TransformerExample::splitString)
+                .log();
+
+    }
+
+    private static Flux<String> splitString(String literal){
+        return Flux.fromArray(literal.split(""));
+    }
+
 }

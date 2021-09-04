@@ -74,4 +74,21 @@ class TransformerExampleTest {
                 .expectNextCount(10)
                 .verifyComplete();
     }
+
+    @Test
+    void flatMapDemoTwo() {
+
+        // given
+        List<String> names = List.of("Ben", "David");
+
+        // when
+        Flux<String> actual = example.flatMapDemoTwo(names);
+
+        // then
+        StepVerifier.create(actual)
+                .expectSubscription()
+                .expectNext("B", "e", "n", "D", "a", "v", "i", "d")
+                .verifyComplete();
+
+    }
 }
