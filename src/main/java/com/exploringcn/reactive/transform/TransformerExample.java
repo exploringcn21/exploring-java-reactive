@@ -30,6 +30,7 @@ public class TransformerExample {
         return Mono.just("alex")
                 .map(String::toUpperCase)
                 .filter(name -> name.length() > stringLength)
+                .defaultIfEmpty("DEFAULT VALUE")    // returns this value if no event to emit
                 .log();
     }
 
