@@ -91,4 +91,34 @@ class TransformerExampleTest {
                 .verifyComplete();
 
     }
+
+    @Test
+    void flatMapUnOrderedBehaviour() {
+        // given
+        List<String> names = List.of("Ben", "David");
+
+        // when
+        Flux<String> actual = example.flatMapUnOrderedBehaviour(names);
+
+        // then
+        StepVerifier.create(actual)
+                .expectSubscription()
+//                .expectNext("B", "e", "n", "D", "a", "v", "i", "d") // this order may not be present, since events will be published out of ordered due to delay
+                .expectNextCount(8) // this is deterministic and will always be true
+                .verifyComplete();
+
+        /*
+        Sample order on a random run:-
+
+        onNext(B)
+        onNext(D)
+        onNext(e)
+        onNext(a)
+        onNext(n)
+        onNext(v)
+        onNext(i)
+        onNext(d)
+        onComplete()
+        */
+    }
 }

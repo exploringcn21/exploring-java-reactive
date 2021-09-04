@@ -4,7 +4,9 @@ import org.reactivestreams.Publisher;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.time.Duration;
 import java.util.List;
+import java.util.Random;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -49,6 +51,17 @@ public class TransformerExample {
 
     private static Flux<String> splitString(String literal){
         return Flux.fromArray(literal.split(""));
+    }
+
+    public Flux<String> flatMapUnOrderedBehaviour(List<String> names){
+        return Flux.fromIterable(names)
+                .flatMap(TransformerExample::splitStringWithDelay)
+                .log();
+    }
+
+    private static Flux<String> splitStringWithDelay(String literal){
+        return Flux.fromArray(literal.split(""))
+                .delayElements(Duration.ofMillis(new Random().nextInt(1000)));  // publish events with a deliberate delay of random seconds (1-10)
     }
 
 }
