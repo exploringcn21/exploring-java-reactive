@@ -2,6 +2,7 @@ package com.exploringcn.reactive.transform;
 
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import java.util.List;
@@ -42,5 +43,19 @@ class TransformerExampleTest {
                 .expectNext("alex", "cindy")
                 .verifyComplete();
 
+    }
+
+    @Test
+    void namesMono_map_filter() {
+        // given
+        int stringLength = 3;
+
+        // when
+        Mono<String> nameMono = example.namesMono_map_filter(stringLength);
+
+        // then
+        StepVerifier.create(nameMono)
+                .expectNextCount(1)     // since length of "alex" is > 3, it will return at least one item
+                .verifyComplete();
     }
 }
