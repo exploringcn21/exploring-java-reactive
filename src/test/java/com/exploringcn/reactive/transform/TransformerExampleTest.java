@@ -121,4 +121,19 @@ class TransformerExampleTest {
         onComplete()
         */
     }
+
+    @Test
+    void concatMapOrderedBehaviour() {
+        // given
+        List<String> names = List.of("Ben", "David");
+
+        // when
+        Flux<String> actual = example.concatMapOrderedBehaviour(names);
+
+        // then
+        StepVerifier.create(actual)
+                .expectSubscription()
+                .expectNext("B", "e", "n", "D", "a", "v", "i", "d") // this order may not be present, since events will be published out of ordered due to delay
+                .verifyComplete();
+    }
 }

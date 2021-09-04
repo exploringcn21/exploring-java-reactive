@@ -64,4 +64,10 @@ public class TransformerExample {
                 .delayElements(Duration.ofMillis(new Random().nextInt(1000)));  // publish events with a deliberate delay of random seconds (1-10)
     }
 
+    public Flux<String> concatMapOrderedBehaviour(List<String> names){
+        return Flux.fromIterable(names)
+                .concatMap(TransformerExample::splitStringWithDelay)
+                .log();
+    }
+
 }
