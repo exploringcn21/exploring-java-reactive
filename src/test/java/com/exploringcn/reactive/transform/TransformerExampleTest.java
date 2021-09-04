@@ -136,4 +136,22 @@ class TransformerExampleTest {
                 .expectNext("B", "e", "n", "D", "a", "v", "i", "d") // this order may not be present, since events will be published out of ordered due to delay
                 .verifyComplete();
     }
+
+    @Test
+    void demoTransformOperation() {
+
+        // given
+        List<String> names = List.of("Ben", "David");
+        int stringLength = 3;
+
+        // when
+        Flux<String> actual = example.demoTransformOperation(names, stringLength);
+
+        // then
+        StepVerifier.create(actual)
+                .expectSubscription()
+                .expectNext("D", "A", "V", "I", "D")
+                .verifyComplete();
+
+    }
 }

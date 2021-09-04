@@ -7,6 +7,7 @@ import reactor.core.publisher.Mono;
 import java.time.Duration;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Function;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -67,6 +68,17 @@ public class TransformerExample {
     public Flux<String> concatMapOrderedBehaviour(List<String> names){
         return Flux.fromIterable(names)
                 .concatMap(TransformerExample::splitStringWithDelay)
+                .log();
+    }
+
+    public Flux<String> demoTransformOperation(List<String> names, int stringLength){
+        Function<Flux<String>, Flux<String>> mapFilter = flux -> flux.map(String::toUpperCase).filter(item -> item.length() > stringLength);
+
+        return Flux.fromIterable(names)
+//                .map(String::toUpperCase)
+//                .filter(item -> item.length() > stringLength)
+                .transform(mapFilter)   // pass the defined behaviour instead to replace the above operations
+                .flatMap(TransformerExample::splitString)
                 .log();
     }
 
