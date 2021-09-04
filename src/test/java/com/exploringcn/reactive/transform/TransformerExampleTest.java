@@ -58,4 +58,20 @@ class TransformerExampleTest {
                 .expectNextCount(1)     // since length of "alex" is > 3, it will return at least one item
                 .verifyComplete();
     }
+
+    @Test
+    void flatMapDemoOne() {
+
+        // given
+        List<Integer> input = List.of(1,2,3,4,5);
+
+        // when
+        Flux<Integer> actual = example.flatMapDemoOne(input);
+
+        // then
+        StepVerifier.create(actual)
+                .expectSubscription()
+                .expectNextCount(10)
+                .verifyComplete();
+    }
 }
