@@ -34,6 +34,16 @@ public class TransformerExample {
                 .log();
     }
 
+    public Mono<String> namesMono_map_filter_switchIfEmpty(int stringLength){
+        Mono<String> defaultMono = Mono.just("DEFAULT VALUE");
+
+        return Mono.just("alex")
+                .map(String::toUpperCase)
+                .filter(name -> name.length() > stringLength)
+                .switchIfEmpty(defaultMono)   // returns this value if no event to emit
+                .log();
+    }
+
     public Flux<Integer> flatMapDemoOne(List<Integer> numbers){
         return Flux.fromIterable(numbers)
                 .flatMap(TransformerExample::returnSquareAndCube)
