@@ -10,4 +10,10 @@ public class TransformerExample {
                 .log();
     }
 
+    public Flux<String> filterNamesOfLengthGreaterThanThree (Iterable<String> names){
+        return Flux.fromIterable(names)
+                .filter(name -> name.length() > 3)
+                .log();
+    }
+
 }
