@@ -1,5 +1,6 @@
 package com.exploringcn.project.movies.service;
 
+import com.exploringcn.project.movies.domain.Movie;
 import org.junit.jupiter.api.Test;
 import reactor.test.StepVerifier;
 
@@ -38,6 +39,23 @@ class MovieReactiveServiceTest {
                     assertEquals("Dark Knight Rises", movie.getMovie().getName());
 
                     // assert on the no. of reviews for the movie
+                    assertEquals(2, movie.getReviewList().size());
+                })
+                .verifyComplete();
+    }
+
+    @Test
+    void getMovieByID() {
+        // given
+        long movieID = 1000;
+
+        // when
+        var movieMono = movieReactiveService.getMovieByID(movieID);
+
+        // then
+        StepVerifier.create(movieMono)
+                .assertNext(movie -> {
+                    assertEquals("Batman Begins", movie.getMovie().getName());
                     assertEquals(2, movie.getReviewList().size());
                 })
                 .verifyComplete();
