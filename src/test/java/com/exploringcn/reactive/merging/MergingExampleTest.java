@@ -27,4 +27,13 @@ class MergingExampleTest {
                 .expectNext("A", "B", "C", "D", "E", "F", "G")   // result will be in this ordered sequence irrespective of delay
                 .verifyComplete();
     }
+
+    @Test
+    void demoConcatWithFluxAndMono() {
+        Flux<String> resultFlux = example.demoConcatWithFluxAndMono();
+
+        StepVerifier.create(resultFlux)
+                .expectNext("A", "D", "E", "F")   // result will be in this ordered sequence irrespective of delay
+                .verifyComplete();
+    }
 }
