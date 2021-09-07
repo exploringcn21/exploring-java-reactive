@@ -36,4 +36,33 @@ class MergingExampleTest {
                 .expectNext("A", "D", "E", "F")   // result will be in this ordered sequence irrespective of delay
                 .verifyComplete();
     }
+
+    @Test
+    void demoMerge() {
+        Flux<String> resultFlux = example.demoMerge();
+
+        StepVerifier.create(resultFlux)
+//                .expectNext("A", "B", "C", "D", "E", "F")   // this sequence will fail
+                .expectNext("A", "D", "B", "E", "C", "F")   // this sequence will succeed
+                .verifyComplete();
+    }
+
+    @Test
+    void demoMergeWith() {
+        Flux<String> resultFlux = example.demoMergeWith();
+
+        StepVerifier.create(resultFlux)
+//                .expectNext("A", "B", "C", "D", "E", "F")   // this sequence will fail
+                .expectNext("A", "D", "B", "E", "C", "F")   // this sequence will succeed
+                .verifyComplete();
+    }
+
+    @Test
+    void demoMergeWithMono() {
+        Flux<String> resultFlux = example.demoMergeWithMono();
+
+        StepVerifier.create(resultFlux)
+                .expectNext("A", "D")
+                .verifyComplete();
+    }
 }
