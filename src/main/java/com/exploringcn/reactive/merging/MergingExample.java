@@ -65,4 +65,33 @@ public class MergingExample {
                 .log();
     }
 
+    public Flux<String> demoZip(){
+        var publisher1 = Flux.just("A", "B", "C");
+        var publisher2 = Flux.just("D", "E", "F");
+
+        return Flux.zip(publisher1, publisher2, String::concat)
+                .log();
+    }
+
+    public Flux<String> demoZipWithFlux(){
+        var publisher1 = Flux.just("A", "B", "C");
+        var publisher2 = Flux.just("D", "E", "F");
+        var publisher3 = Flux.just("X", "Y", "Z");
+        var publisher4 = Flux.just("1", "2", "3");
+
+        return publisher1.zipWith(publisher2, String::concat)
+                .zipWith(publisher3, String::concat)
+                .zipWith(publisher4, String::concat)
+                .log();
+    }
+
+    public Mono<String> demoZipWithMono(){
+        var publisher1 = Mono.just("A");
+        var publisher2 = Mono.just("D");
+
+        return publisher1.zipWith(publisher2)
+                .map(t -> t.getT1().concat(t.getT2()))
+                .log();
+    }
+
 }

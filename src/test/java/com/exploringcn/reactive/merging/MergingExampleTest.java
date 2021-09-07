@@ -2,6 +2,7 @@ package com.exploringcn.reactive.merging;
 
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import reactor.test.StepVerifier;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -63,6 +64,33 @@ class MergingExampleTest {
 
         StepVerifier.create(resultFlux)
                 .expectNext("A", "D")
+                .verifyComplete();
+    }
+
+    @Test
+    void demoZip() {
+        Flux<String> resultFlux = example.demoZip();
+
+        StepVerifier.create(resultFlux)
+                .expectNext("AD","BE","CF")
+                .verifyComplete();
+    }
+
+    @Test
+    void demoZipWithFlux() {
+        Flux<String> resultFlux = example.demoZipWithFlux();
+
+        StepVerifier.create(resultFlux)
+                .expectNext("ADX1","BEY2","CFZ3")
+                .verifyComplete();
+    }
+
+    @Test
+    void demoZipWithMono() {
+        Mono<String> resultFlux = example.demoZipWithMono();
+
+        StepVerifier.create(resultFlux)
+                .expectNext("AD")
                 .verifyComplete();
     }
 }
