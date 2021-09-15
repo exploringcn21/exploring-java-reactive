@@ -20,4 +20,15 @@ class ExceptionHandlingExampleTest {
                 .expectError(ArithmeticException.class)
                 .verify();
     }
+
+    @Test
+    void demoOnErrorReturn() {
+        Flux<Integer> numbersFlux = example.demoOnErrorReturn();
+
+        StepVerifier.create(numbersFlux)
+                .expectSubscription()
+                .expectNext(60,15,30)
+                .expectNext(60)
+                .verifyComplete();
+    }
 }
