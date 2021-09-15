@@ -42,4 +42,15 @@ class ExceptionHandlingExampleTest {
                 .expectNext(100,101,102)
                 .verifyComplete();
     }
+
+    @Test
+    void demoOnErrorContinue() {
+        Flux<Integer> numbersFlux = example.demoOnErrorContinue();
+
+        StepVerifier.create(numbersFlux)
+                .expectSubscription()
+                .expectNext(60,15,30)
+                .expectNext(12,20)
+                .verifyComplete();
+    }
 }

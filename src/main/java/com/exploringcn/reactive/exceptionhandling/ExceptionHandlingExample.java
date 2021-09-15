@@ -35,5 +35,11 @@ public class ExceptionHandlingExample {
     }
 
 
+    public Flux<Integer> demoOnErrorContinue(){
+        return Flux.just(1,4,2,0,5,3)
+                .map(integer -> 60/integer)
+                .onErrorContinue((ex, item) -> System.out.println("Element " + item + " caused the exception: " + ex.getMessage()))
+                .log();
+    }
 
 }
