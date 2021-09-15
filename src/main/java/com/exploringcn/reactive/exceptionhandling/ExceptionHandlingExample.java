@@ -18,4 +18,22 @@ public class ExceptionHandlingExample {
                 .log();
     }
 
+
+    public Flux<Integer> demoOnErrorResumeConditionalRecovery(){
+        Flux<Integer> recoveryFluxOption1 = Flux.just(100,101,102);
+        Flux<Integer> recoveryFluxOption2 = Flux.just(200,201,202);
+
+        return Flux.just(1,4,2,0,5,3)
+                .map(integer -> 60/integer)
+                .onErrorResume(e -> {
+                    if (e instanceof ArithmeticException)
+                        return recoveryFluxOption1;
+                    else
+                        return recoveryFluxOption2;
+                })
+                .log();
+    }
+
+
+
 }

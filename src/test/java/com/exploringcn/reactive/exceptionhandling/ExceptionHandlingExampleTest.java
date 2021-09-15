@@ -31,4 +31,15 @@ class ExceptionHandlingExampleTest {
                 .expectNext(60)
                 .verifyComplete();
     }
+
+    @Test
+    void demoOnErrorResumeConditionalRecovery() {
+        Flux<Integer> numbersFlux = example.demoOnErrorResumeConditionalRecovery();
+
+        StepVerifier.create(numbersFlux)
+                .expectSubscription()
+                .expectNext(60,15,30)
+                .expectNext(100,101,102)
+                .verifyComplete();
+    }
 }
