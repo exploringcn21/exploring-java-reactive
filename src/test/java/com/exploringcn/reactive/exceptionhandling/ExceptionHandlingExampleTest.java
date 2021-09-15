@@ -3,6 +3,7 @@ package com.exploringcn.reactive.exceptionhandling;
 import org.junit.jupiter.api.Test;
 import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
+import reactor.test.StepVerifierExtensionsKt;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -52,5 +53,16 @@ class ExceptionHandlingExampleTest {
                 .expectNext(60,15,30)
                 .expectNext(12,20)
                 .verifyComplete();
+    }
+
+    @Test
+    void demoOnErrorMap() {
+        Flux<String> itemsFlux = example.demoOnErrorMap();
+
+        StepVerifier.create(itemsFlux)
+                .expectSubscription()
+                .expectNext("APPLE", "MANGO")
+                .expectError(RuntimeException.class)
+                .verify();
     }
 }

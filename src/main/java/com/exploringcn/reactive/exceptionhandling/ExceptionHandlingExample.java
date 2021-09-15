@@ -42,4 +42,19 @@ public class ExceptionHandlingExample {
                 .log();
     }
 
+    public Flux<String> demoOnErrorMap(){
+        return Flux.just("apple", "mango", "capsicum", "strawberry", "tulip", "pear")
+                .map(fruit -> {
+                    if (fruit.equals("capsicum"))
+                        throw new IllegalStateException("No vegetables can be processed");
+                    if (fruit.equals("tulip"))
+                        throw new IllegalStateException("No flowers can be processed");
+                    return fruit.toUpperCase();
+                })
+                .onErrorMap(ex -> {
+                    System.err.println(ex.getMessage());
+                    return new RuntimeException(ex.getMessage());
+                })
+                .log();
+    }
 }
